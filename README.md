@@ -1,6 +1,6 @@
 # SENTINEL — Industrial AI Platform
 
-[![CI](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml)
+[![CI](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.10+-blue) ![License](https://img.shields.io/badge/License-MIT-green)
 
 SENTINEL is a full-stack industrial AI platform — ML engine, REST API, and operator dashboard — that gives maintenance engineers both an early warning and a reason for it.
 
@@ -25,6 +25,8 @@ It detects anomalies in turbofan engine sensor readings, estimates how many oper
 
 FD002 LSTM AE: **0.06 → 0.61** (+916%). FD004: **0.02 → 0.45** (+2,150%).
 
+![Anomaly F1 Comparison](docs/images/anomaly_f1_comparison.png)
+
 ### RUL Estimation (RMSE — lower is better)
 
 | Subset | Baseline | Enhanced | Improvement |
@@ -35,6 +37,8 @@ FD002 LSTM AE: **0.06 → 0.61** (+916%). FD004: **0.02 → 0.45** (+2,150%).
 | FD004  | 18.29    | **15.95** | −12.8%     |
 
 All results are fully reproducible — see [Running the benchmarks](#3-run-the-ml-pipeline) below.
+
+![RUL RMSE Comparison](docs/images/rul_rmse_comparison.png)
 
 ---
 
@@ -49,7 +53,21 @@ Isotonic regression applied per-engine in post-processing enforces the physical 
 **3. SHAP and LIME agree on top-5 features in >80% of test instances.**
 Cross-method agreement validates explanation fidelity. Sensors 11, 12, 7, and 15 dominate attributions across all subsets — consistent with known HPC degradation signatures in C-MAPSS.
 
+**SHAP Feature Attribution — Top Sensors (FD001)**
+![SHAP Top Features](docs/images/shap_top_features.png)
+
+**Autoencoder Sensor Reconstruction Error — Healthy vs Anomalous**
+![Sensor Deltas](docs/images/autoencoder_sensor_deltas.png)
+
 See [RESEARCH_FINDINGS.md](RESEARCH_FINDINGS.md) for the full write-up.
+
+---
+
+## Screenshots
+
+> Screenshots will be added once the dashboard is running locally.
+> Start the project with `npm run dev` and `uvicorn api.main:app --reload`
+> to see the live fleet dashboard, SHAP charts, and alert management pages.
 
 ---
 

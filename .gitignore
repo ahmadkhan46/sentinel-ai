@@ -27,8 +27,8 @@ data/
 # ML model artifacts (large — regenerate via pipeline)
 models/
 
-# Private docs (local only)
-docs/
+# Private docs (local only — only the images subfolder is committed)
+docs/*.md
 
 # Reports (regenerated outputs — keep application docs)
 reports/phase1/
