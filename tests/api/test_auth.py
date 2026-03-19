@@ -28,7 +28,7 @@ async def test_login_wrong_password(client: AsyncClient, org_and_admin):
 @pytest.mark.asyncio
 async def test_me_requires_auth(client: AsyncClient):
     response = await client.get("/api/v1/auth/me")
-    assert response.status_code == 403  # HTTPBearer returns 403 when no header
+    assert response.status_code == 401  # HTTPBearer returns 401 when no header
 
 
 @pytest.mark.asyncio
