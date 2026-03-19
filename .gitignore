@@ -22,10 +22,10 @@ env/
 *.sqlite3
 
 # Data (large — download via script)
-data/
+/data/
 
 # ML model artifacts (large — regenerate via pipeline)
-models/
+/models/
 
 # Private docs (local only — only the images subfolder is committed)
 docs/*.md
