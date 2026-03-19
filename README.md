@@ -296,7 +296,30 @@ tests/                 # API integration tests + ML unit tests
 
 ## Dataset
 
-NASA C-MAPSS turbofan degradation simulation — 4 subsets (FD001–FD004), 21 sensors, train/test split by engine ID, ground-truth RUL files. Downloaded automatically via `scripts/download_cmapss.py` from HuggingFace. `data/` is gitignored.
+NASA C-MAPSS (Commercial Modular Aero-Propulsion System Simulation) is a turbofan engine degradation benchmark released by NASA. It simulates engines running from healthy to failure, recording 21 sensor channels (temperature, pressure, fan speed, fuel flow) and 3 operating settings per cycle. One cycle represents one flight.
+
+There are four subsets:
+
+| Subset | Engines (train) | Operating conditions | Fault mode |
+|--------|:---------------:|:--------------------:|------------|
+| FD001  | 100             | 1 (fixed)            | HPC degradation |
+| FD002  | 260             | 6 (mixed)            | HPC degradation |
+| FD003  | 100             | 1 (fixed)            | HPC + fan degradation |
+| FD004  | 249             | 6 (mixed)            | HPC + fan degradation |
+
+FD001 and FD003 are single-condition — every engine runs at the same altitude and throttle. FD002 and FD004 switch between six operating regimes mid-flight, making them significantly harder for sequence models that assume a consistent healthy baseline. This is the root cause of the near-zero anomaly F1 scores on those subsets before Operating Condition Normalisation was applied.
+
+The dataset is downloaded automatically from HuggingFace via `scripts/download_cmapss.py`. `data/` is gitignored.
+
+---
+
+## Conclusion
+
+The core finding of this project is that **operating condition awareness is the single most important factor** in making sequence-based anomaly detection work on real industrial datasets. Without it, LSTM autoencoders trained on multi-condition engines spend their capacity modelling regime changes rather than degradation — producing F1 scores close to zero regardless of model size or tuning. A lightweight pre-processing step (KMeans regime clustering + per-regime normalisation) resolves this entirely, improving FD002 anomaly F1 by over 900%.
+
+The secondary finding is that **domain knowledge applied in post-processing** is often more cost-effective than architectural changes. Enforcing the physical constraint that RUL cannot increase reduced RMSE by up to 12.8% on the hardest subsets with no additional training.
+
+Together these demonstrate that predictive maintenance models fail not because the ML is wrong but because the data preparation ignores the physics of the system — and that fixing the physics is faster than tuning the model.
 
 ---
 
