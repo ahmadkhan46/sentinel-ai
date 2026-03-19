@@ -1,0 +1,22 @@
+[
+  {
+    "subset": "FD001",
+    "config_path": "configs\\deploy\\fd001_deploy.yaml",
+    "deploy_phase": "phase2"
+  },
+  {
+    "subset": "FD002",
+    "config_path": "configs\\deploy\\fd002_deploy.yaml",
+    "deploy_phase": "phase1"
+  },
+  {
+    "subset": "FD003",
+    "config_path": "configs\\deploy\\fd003_deploy.yaml",
+    "deploy_phase": "phase2"
+  },
+  {
+    "subset": "FD004",
+    "config_path": "configs\\deploy\\fd004_deploy.yaml",
+    "deploy_phase": "phase1"
+  }
+]

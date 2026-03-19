@@ -1,0 +1,58 @@
+project_name: "cmapss_fd004_predictive_maintenance"
+seed: 42
+
+paths:
+  data_dir: "data"
+  reports_dir: "reports"
+
+dataset:
+  subset: "FD004"
+  sequence_length: 30
+  target_rul_clip: 125
+  # B1: OC normalisation ON — FD004 has 6 operating conditions (same as FD002)
+  operating_condition_normalisation: true
+
+phase1:
+  val_ratio: 0.2
+  anomaly_proxy_horizon: 20
+  healthy_cycle_fraction: 0.3
+
+phase2:
+  enabled: true
+  model_type: "lstm"
+  anomaly_proxy_horizon: 20
+  healthy_cycle_fraction: 0.3
+  threshold_quantile: 0.93
+  hidden_size: 64
+  epochs: 20
+  batch_size: 128
+  learning_rate: 0.001
+  device: "auto"
+
+phase3:
+  enabled: true
+  top_k_features: 10
+  shap_background_size: 1000
+  shap_sample_size: 2000
+  sequence_diagnostics_quantile: 0.95
+
+anomaly:
+  iforest:
+    n_estimators: 200
+    contamination: 0.03
+  ocsvm:
+    kernel: "rbf"
+    nu: 0.03
+    gamma: "scale"
+  alert:
+    threshold_quantile: 0.97
+    consecutive_cycles: 3
+
+rul:
+  fit_monotonic: true
+  xgboost:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.03
+    subsample: 0.8
+    colsample_bytree: 0.8

@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite3
+
+# Data (large — download via script)
+data/
+
+# ML model artifacts (large — regenerate via pipeline)
+models/
+
+# Reports (regenerated outputs — keep application docs)
+reports/phase1/
+reports/phase2/
+reports/phase3/
+reports/digital_twin/
+reports/deploy_runs/
+reports/benchmark_summary/
+reports/application/*.pdf
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Next.js / Node
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ruff / mypy
+.ruff_cache/
+.mypy_cache/
