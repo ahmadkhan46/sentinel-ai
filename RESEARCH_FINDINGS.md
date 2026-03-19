@@ -100,7 +100,7 @@ Maintenance metrics (MTTF, early warning lead time, OEE impact, maintenance ROI)
 
 ## 6. Architecture and Deployment
 
-SENTINEL is built as a full-stack enterprise platform:
+SENTINEL is built as a full-stack production platform:
 - **ML engine** (`ml/`): pure Python, config-driven, benchmarkable
 - **FastAPI backend** (`api/`): async SQLAlchemy, JWT auth, Redis pub/sub, Celery workers
 - **Next.js frontend** (`frontend/`): real-time WebSocket dashboard, SHAP visualisation, alert management

@@ -25,7 +25,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="SENTINEL — Industrial AI Platform",
         description=(
-            "Enterprise predictive maintenance API powered by NASA C-MAPSS turbofan data. "
+            "Predictive maintenance API powered by NASA C-MAPSS turbofan data. "
             "Provides anomaly detection, RUL prediction, SHAP explanations, and digital twin simulation."
         ),
         version="1.0.0",

@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml)
 
-> Enterprise predictive maintenance for turbofan engines, built on NASA C-MAPSS.
+> Predictive maintenance platform for turbofan engines, built on NASA C-MAPSS.
 > PhD application portfolio — Dr Ken Bruton, IERG/FLARE, University College Cork.
 > **GitHub:** https://github.com/AhmadKhan46/sentinel-ai
 
