@@ -27,6 +27,9 @@ data/
 # ML model artifacts (large — regenerate via pipeline)
 models/
 
+# Private docs (local only)
+docs/
+
 # Reports (regenerated outputs — keep application docs)
 reports/phase1/
 reports/phase2/
