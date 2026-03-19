@@ -30,5 +30,5 @@ class Organisation(Base):
 
 
 # avoid circular import at module level
-from api.models.user import User  # noqa: E402
 from api.models.asset import Asset  # noqa: E402
+from api.models.user import User  # noqa: E402

@@ -46,8 +46,8 @@ class Asset(Base):
     work_orders: Mapped[list[WorkOrder]] = relationship("WorkOrder", back_populates="asset")
 
 
+from api.models.alert import Alert  # noqa: E402
+from api.models.inference_result import InferenceResult  # noqa: E402
 from api.models.organisation import Organisation  # noqa: E402
 from api.models.sensor_reading import SensorReading  # noqa: E402
-from api.models.inference_result import InferenceResult  # noqa: E402
-from api.models.alert import Alert  # noqa: E402
 from api.models.work_order import WorkOrder  # noqa: E402

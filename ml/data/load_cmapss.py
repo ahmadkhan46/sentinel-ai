@@ -4,7 +4,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 CMAPSS_COLUMNS = [
     "engine_id",
     "cycle",

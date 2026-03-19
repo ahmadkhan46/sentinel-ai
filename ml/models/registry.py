@@ -26,7 +26,6 @@ import yaml
 from ml.engine import ModelBundle
 from ml.models.rul.xgb_regressor import RULXGB
 
-
 # ── Data types ──────────────────────────────────────────────────────────────────
 
 @dataclass
