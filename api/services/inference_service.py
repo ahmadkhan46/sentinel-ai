@@ -48,7 +48,7 @@ async def run_inference_for_asset(
 
     # Load SentinelEngine — fall back to demo mode if no trained models exist
     try:
-        from ml.engine import SentinelEngine  # noqa: PLC0415
+        from ml.engine import SentinelEngine  # noqa: PLC0415, I001
         from ml.models.registry import ModelRegistry  # noqa: PLC0415
 
         registry = ModelRegistry(root=settings.ML_MODEL_PATH)
