@@ -205,9 +205,9 @@ async def seed(db: AsyncSession) -> None:
 
     await db.commit()
     print("Seed complete.")
-    print(f"  Admin:    admin@acme.com / Admin1234!")
-    print(f"  Engineer: engineer@acme.com / Engineer1234!")
-    print(f"  Viewer:   viewer@acme.com / Viewer1234!")
+    print("  Admin:    admin@acme.com / Admin1234!")
+    print("  Engineer: engineer@acme.com / Engineer1234!")
+    print("  Viewer:   viewer@acme.com / Viewer1234!")
 
 
 async def main() -> None:

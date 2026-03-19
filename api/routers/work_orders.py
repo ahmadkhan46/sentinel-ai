@@ -8,8 +8,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.core.database import get_db
-from api.middleware.auth import get_current_user, require_role
 from api.middleware.audit import log_action
+from api.middleware.auth import get_current_user, require_role
 from api.models.asset import Asset
 from api.models.user import User
 from api.models.work_order import WorkOrder
@@ -36,7 +36,7 @@ async def list_work_orders(
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
 ) -> list[WorkOrder]:
-    asset = await _check_asset(asset_id, db, current_user)
+    await _check_asset(asset_id, db, current_user)
     result = await db.execute(
         select(WorkOrder)
         .where(WorkOrder.asset_id == asset_id)

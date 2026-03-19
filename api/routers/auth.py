@@ -12,7 +12,6 @@ from api.core.security import (
     create_access_token,
     create_refresh_token,
     decode_token,
-    hash_password,
     verify_password,
 )
 from api.middleware.auth import get_current_user

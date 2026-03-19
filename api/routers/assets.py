@@ -7,8 +7,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.core.database import get_db
-from api.middleware.auth import get_current_user, require_role
 from api.middleware.audit import log_action
+from api.middleware.auth import get_current_user, require_role
 from api.models.asset import Asset
 from api.models.user import User
 from api.schemas.asset import AssetCreate, AssetOut, AssetUpdate

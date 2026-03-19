@@ -28,15 +28,17 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def init_db() -> None:
     """Create all tables. Run on startup (dev) or use Alembic in production."""
-    from api.models.base import Base  # noqa: F401 — import ensures all models are registered
-    import api.models.organisation  # noqa: F401
-    import api.models.user  # noqa: F401
-    import api.models.asset  # noqa: F401
-    import api.models.sensor_reading  # noqa: F401
-    import api.models.inference_result  # noqa: F401
     import api.models.alert  # noqa: F401
-    import api.models.work_order  # noqa: F401
+    import api.models.asset  # noqa: F401
     import api.models.audit_log  # noqa: F401
+    import api.models.inference_result  # noqa: F401
+    import api.models.organisation  # noqa: F401
+    import api.models.sensor_reading  # noqa: F401
+    import api.models.user  # noqa: F401
+    import api.models.work_order  # noqa: F401
+    from api.models.base import (
+        Base,  # noqa: F401 — import ensures all models are registered
+    )
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)

@@ -39,6 +39,8 @@ async def trigger_inference(
         return await run_inference_for_asset(asset_id, db, cycle=body.cycle)
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc))
 
 
 @router.get("", response_model=list[InferenceOut])

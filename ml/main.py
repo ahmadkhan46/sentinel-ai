@@ -14,7 +14,6 @@ from ml.data.preprocess import (
     OperatingConditionNormaliser,
     add_train_rul,
     apply_scaler,
-    compute_health_index,
     default_feature_columns,
     drop_near_constant,
     fit_scaler,
@@ -22,10 +21,13 @@ from ml.data.preprocess import (
     train_val_engine_split,
 )
 from ml.data.windowing import build_sequences_with_metadata
-from ml.eval.metrics import anomaly_prf, compute_maintenance_metrics, rul_regression_metrics
+from ml.eval.metrics import (
+    anomaly_prf,
+    compute_maintenance_metrics,
+    rul_regression_metrics,
+)
 from ml.eval.plots import (
     plot_fault_timeline,
-    plot_health_index_trajectory,
     plot_rul_true_vs_pred,
     plot_sensor_correlation_heatmap,
 )
@@ -578,7 +580,7 @@ def _run_phase3(
             for eng_id in sample_engines:
                 eng_mask = (val_scaled["engine_id"] == eng_id).to_numpy()
                 eng_df = val_scaled[val_scaled["engine_id"] == eng_id].sort_values("cycle")
-                sort_idx = eng_df.index
+
                 eng_scores = selected_scores[eng_mask]
                 eng_rul_pred = val_rul_pred[eng_mask]
                 eng_rul_true = y_val_rul[eng_mask] if y_val_rul is not None else None

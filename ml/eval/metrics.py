@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 import numpy as np
-from sklearn.metrics import mean_absolute_error, mean_squared_error, precision_recall_fscore_support
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_squared_error,
+    precision_recall_fscore_support,
+)
 
 
 def anomaly_prf(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
@@ -45,7 +49,6 @@ def compute_early_warning_lead_time(
     threshold, then compute the distance to the first proxy-anomalous cycle.
     Positive lead time = alert fired before the anomaly window started (good).
     """
-    import pandas as pd
 
     if not hasattr(val_df, "iloc"):
         raise TypeError("val_df must be a pandas DataFrame")

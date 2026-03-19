@@ -17,7 +17,6 @@ from pydantic import BaseModel
 
 from ml.models.rul.xgb_regressor import RULXGB
 
-
 # ── Result types (Pydantic → direct JSON serialisation) ────────────────────────
 
 class SensorContribution(BaseModel):
@@ -292,8 +291,10 @@ class SentinelEngine:
         if self._bundle.model_type in ("lstm", "gru"):
             seq_len = self._bundle.sequence_length
             if len(x) >= seq_len:
+                from ml.explain.recon_error import (
+                    sequence_sensor_reconstruction_contrib,
+                )
                 from ml.models.anomaly.lstm_autoencoder import reconstruct
-                from ml.explain.recon_error import sequence_sensor_reconstruction_contrib
 
                 window = x[-seq_len:][np.newaxis, :, :]
                 recon = reconstruct(self._bundle.anomaly_model, window, device="cpu")

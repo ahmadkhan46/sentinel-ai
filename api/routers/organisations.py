@@ -10,7 +10,11 @@ from api.core.database import get_db
 from api.middleware.auth import get_current_user, require_role
 from api.models.organisation import Organisation
 from api.models.user import User
-from api.schemas.organisation import OrganisationCreate, OrganisationOut, OrganisationUpdate
+from api.schemas.organisation import (
+    OrganisationCreate,
+    OrganisationOut,
+    OrganisationUpdate,
+)
 
 router = APIRouter(prefix="/organisations", tags=["organisations"])
 

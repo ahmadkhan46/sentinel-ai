@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 import json
 from collections import defaultdict
 
@@ -38,14 +37,17 @@ async def redis_listener(org_id: str) -> None:
     """Subscribe to Redis pub/sub for an org and forward messages to connected WebSocket clients."""
     from api.core.redis import get_redis  # lazy import
 
-    r = get_redis()
-    channel = f"org:{org_id}:inference"
-    async with r.pubsub() as pubsub:
-        await pubsub.subscribe(channel)
-        async for message in pubsub.listen():
-            if message["type"] == "message":
-                try:
-                    data = json.loads(message["data"])
-                    await manager.broadcast(org_id, data)
-                except Exception:
-                    pass
+    try:
+        r = get_redis()
+        channel = f"org:{org_id}:inference"
+        async with r.pubsub() as pubsub:
+            await pubsub.subscribe(channel)
+            async for message in pubsub.listen():
+                if message["type"] == "message":
+                    try:
+                        data = json.loads(message["data"])
+                        await manager.broadcast(org_id, data)
+                    except Exception:
+                        pass
+    except Exception:
+        pass  # Redis unavailable — WebSocket live events disabled

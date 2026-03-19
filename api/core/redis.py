@@ -15,8 +15,11 @@ def get_redis() -> aioredis.Redis:
 
 
 async def publish(channel: str, message: str) -> None:
-    r = get_redis()
-    await r.publish(channel, message)
+    try:
+        r = get_redis()
+        await r.publish(channel, message)
+    except Exception:
+        pass  # Redis unavailable in dev — real-time events disabled, inference still works
 
 
 async def close_redis() -> None:

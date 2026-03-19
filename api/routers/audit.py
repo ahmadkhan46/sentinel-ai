@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Query
+from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -10,8 +12,6 @@ from api.core.database import get_db
 from api.middleware.auth import require_role
 from api.models.audit_log import AuditLog
 from api.models.user import User
-from pydantic import BaseModel
-from datetime import datetime
 
 
 class AuditLogOut(BaseModel):

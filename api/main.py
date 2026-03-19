@@ -41,16 +41,16 @@ def create_app() -> FastAPI:
     )
 
     # Register routers
-    from api.routers.auth import router as auth_router
-    from api.routers.organisations import router as org_router
-    from api.routers.assets import router as asset_router
-    from api.routers.sensors import router as sensor_router
-    from api.routers.inference import router as inference_router
     from api.routers.alerts import router as alert_router
     from api.routers.analytics import router as analytics_router
-    from api.routers.work_orders import router as wo_router
-    from api.routers.models import router as model_router
+    from api.routers.assets import router as asset_router
     from api.routers.audit import router as audit_router
+    from api.routers.auth import router as auth_router
+    from api.routers.inference import router as inference_router
+    from api.routers.models import router as model_router
+    from api.routers.organisations import router as org_router
+    from api.routers.sensors import router as sensor_router
+    from api.routers.work_orders import router as wo_router
     from api.routers.ws import router as ws_router
 
     prefix = "/api/v1"
