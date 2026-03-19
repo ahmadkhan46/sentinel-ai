@@ -1,6 +1,6 @@
 # SENTINEL — Industrial AI Platform
 
-[![CI](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/AhmadKhan46/sentinel-ai/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.10+-blue) ![License](https://img.shields.io/badge/License-MIT-green)
+[![CI](https://github.com/ahmadkhan46/sentinel-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/ahmadkhan46/sentinel-ai/actions/workflows/ci.yml) ![Python](https://img.shields.io/badge/Python-3.10+-blue) ![License](https://img.shields.io/badge/License-MIT-green)
 
 SENTINEL is a full-stack industrial AI platform — ML engine, REST API, and operator dashboard — that gives maintenance engineers both an early warning and a reason for it.
 
@@ -112,7 +112,7 @@ See [RESEARCH_FINDINGS.md](RESEARCH_FINDINGS.md) for the full write-up.
 ### 1. Clone and set up Python environment
 
 ```bash
-git clone https://github.com/AhmadKhan46/sentinel-ai.git
+git clone https://github.com/ahmadkhan46/sentinel-ai.git
 cd sentinel-ai
 
 python -m venv .venv
